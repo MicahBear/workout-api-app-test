@@ -3,12 +3,12 @@ const Workout = require('../models/workoutModel');
 
 module.exports = {
     postWorkout: async (request, response) => {
-        const { title, reps, load } = req.body
+        // const { title, reps, load, likes } = request.body
         try {
             const data = await Workout.create({
-                title,
-                reps,
-                load,
+                title: request.body.title,
+                reps: request.body.reps,
+                load: request.body.load,
                 likes: 0,
             });
             response.status(200).json(data)
