@@ -1,5 +1,5 @@
 // need to pull infro database
-const Workout = require('../modles/workoutModel');
+const Workout = require('../models/workoutModel');
 
 module.exports = {
     postWorkout: async (request, response) => {
