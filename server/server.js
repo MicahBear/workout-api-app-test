@@ -1,7 +1,8 @@
 // register express
 const express = require('express');
 require('dotenv').config();
-
+const workoutRoutes = require('./routes/workoutroutes');
+const homeRoutes = require('./routes/homeroutes');
 
 
 // creating express app for us.
@@ -15,8 +16,8 @@ app.use((request, response, next) => {
 });
 
 //routing requests
-app.use('/', homeroutes);
-app.use('/workouts', workoutroutes)
+app.use('/', homeRoutes);
+app.use('/workouts', workoutRoutes)
 
 
 // listening for request
