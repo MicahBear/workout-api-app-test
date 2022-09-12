@@ -13,7 +13,7 @@ router.get('/:id', workoutController.singleWorkout);
 router.delete('/:id', workoutController.deleteWorkout);
 
 //update single workout
-router.put('/:id', workoutController.updateSingle);
+router.patch('/:id', workoutController.updateSingle);
 
 
 module.exports = router;
