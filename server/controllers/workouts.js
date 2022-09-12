@@ -1,18 +1,24 @@
 // need to pull infro database
-const Workout = require('../modles/Workout');
+const Workout = require('../modles/workoutModel');
 
 module.exports = {
-    postWorkout: async (request, resposne) => {
+    postWorkout: async (request, response) => {
+        const { title, reps, load } = req.body
         try {
-
-
+            const data = await Workout.create({
+                title,
+                reps,
+                load,
+                likes: 0,
+            });
+            response.status(200).json(data)
 
 
         } catch (error) {
             console.log(error);
         }
     },
-    singleWorkout: async (request, resposne) => {
+    singleWorkout: async (request, response) => {
         try {
             // need to await response of single workout request with id and
 

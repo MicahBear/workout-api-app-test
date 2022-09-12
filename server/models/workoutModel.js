@@ -12,7 +12,11 @@ const WorkoutSchema = new mongoose.Schema({
     load: {
         type: Number,
         required: true
-    }
+    },
+    likes: {
+        type: Number,
+        require: true
+    },
 
 }, { timestamps: true })
 
