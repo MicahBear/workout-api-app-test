@@ -1,7 +1,14 @@
-const { response } = require("express");
+const Workout = require('../models/workoutModel');
 
 module.exports = {
-    getWorkouts: (req, res) => {
-        res.json({ mssg: 'GET all workouts' })
+    getWorkouts: async (req, res) => {
+        try {
+            const workoutInfo = await Workout.find({}).sort({ createdAt: -1 })
+            res.json(workoutInfo)
+
+        } catch (error) {
+
+        }
+
     },
 };

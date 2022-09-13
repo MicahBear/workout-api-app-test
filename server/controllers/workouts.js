@@ -19,9 +19,15 @@ module.exports = {
         }
     },
     singleWorkout: async (request, response) => {
+
         try {
             // need to await response of single workout request with id and
+            const singleWorkoutInfo = await Workout.findById({ _id: request.params.id })
+            if (!singleWorkoutInfo) {
+                return response.status(404).json({ error: 'no such workout' })
+            }
 
+            response.status(200).json(singleWorkoutInfo)
             //then put in render
         } catch (error) {
             console.log(error);
@@ -39,7 +45,7 @@ module.exports = {
     },
     deleteWorkout: async (request, response) => {
         try {
-            //need to grab workout by id from database await
+            //need to grab workout by id from database await            
 
             // await delete workout from database
 
