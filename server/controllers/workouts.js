@@ -36,9 +36,15 @@ module.exports = {
     //update a single workout
     updateSingle: async (request, response) => {
         try {
+            const updateInfo = await Workout.findByIdAndUpdate({ _id: request.params.id }, { ...request.body, $inc: { likes: 1 } })
             // await resposne by ID and update
             // will need to add $inc for increasing likes.. 
             // NEED update for many fields. 
+            if (!updateInfo) {
+                return response.status(400).json({ error: "no such workout" })
+            }
+
+            response.status(200).json(updateInfo)
 
         } catch (error) {
             console.log(error)
@@ -46,12 +52,15 @@ module.exports = {
     },
     //delete a single workout.
     deleteWorkout: async (request, response) => {
+
         try {
-            //need to grab workout by id from database await            
-
-            // await delete workout from database
-
-            //possible redirect to root.
+            const singleWorkoutInfo = await Workout.findById({ _id: request.params.id })
+            if (!singleWorkoutInfo) {
+                return response.status(404).json({ error: "no such workout" })
+            }
+            await Workout.deleteOne(singleWorkoutInfo)
+            console.log("deleted workout");
+            response.redirect('/');
 
         } catch (error) {
             console.log(error)
