@@ -1,7 +1,9 @@
 // need to pull infro database
 const Workout = require('../models/workoutModel');
+const mongoose = require('mongoose');
 
 module.exports = {
+    // add a workout
     postWorkout: async (request, response) => {
         // const { title, reps, load, likes } = request.body
         try {
@@ -18,21 +20,20 @@ module.exports = {
             console.log(error);
         }
     },
+    //grab a single workout
     singleWorkout: async (request, response) => {
 
         try {
-            // need to await response of single workout request with id and
             const singleWorkoutInfo = await Workout.findById({ _id: request.params.id })
             if (!singleWorkoutInfo) {
                 return response.status(404).json({ error: 'no such workout' })
             }
-
             response.status(200).json(singleWorkoutInfo)
-            //then put in render
         } catch (error) {
             console.log(error);
         }
     },
+    //update a single workout
     updateSingle: async (request, response) => {
         try {
             // await resposne by ID and update
@@ -43,6 +44,7 @@ module.exports = {
             console.log(error)
         }
     },
+    //delete a single workout.
     deleteWorkout: async (request, response) => {
         try {
             //need to grab workout by id from database await            
