@@ -45,9 +45,9 @@ Coming Soon
 ## Roadmap
 
 - [ ] Wireframe
-- [ ] Backend
-  - [ ] Server/Database
-    - [ ] Test Database req/res
+- [x] Backend
+  - [x] Server/Database
+    - [x] Test Database req/res
 - [ ] Frontend
   - [ ] Implement Design
   - [ ] Client side functionality
