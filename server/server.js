@@ -1,6 +1,7 @@
 // register express
 const express = require('express');
 require('dotenv').config();
+const cors = require('cors')
 const mongoose = require('mongoose');
 const connectDB = require('./config/database');
 const workoutRoutes = require('./routes/workoutroutes');
@@ -24,6 +25,7 @@ app.use((request, response, next) => {
 //routing requests
 app.use('/', homeRoutes);
 app.use('/workouts', workoutRoutes)
+app.use(cors())
 
 
 // listening for request

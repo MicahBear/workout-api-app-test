@@ -1,8 +1,9 @@
 const express = require('express');
+const cors = require('cors')
 const router = express.Router();
 const workoutController = require('../controllers/workouts')
 
-
+router.use(cors)
 // create workout
 router.post('/', workoutController.postWorkout);
 
