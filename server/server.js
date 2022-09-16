@@ -23,9 +23,9 @@ app.use((request, response, next) => {
 });
 
 //routing requests
+app.use(cors())
 app.use('/', homeRoutes);
 app.use('/workouts', workoutRoutes)
-app.use(cors())
 
 
 // listening for request
